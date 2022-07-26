@@ -1,0 +1,220 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    font-weight:700;
+    
+}
+div,p,input,button,form,span,a,ul,li{
+    box-sizing: border-box;
+}
+
+.container{
+    width: 1170px;
+    margin: 0 auto;
+}
+.logo {
+    padding-top:  66px;
+}
+header{
+background: rgba(78, 190, 254, 1);
+    background: -moz-linear-gradient(-45deg, rgba(78, 190, 254, 1) 0%, rgba(55, 143, 217, 1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(78, 190, 254, 1)), color-stop(100%, rgba(55, 143, 217, 1)));
+    background: -webkit-linear-gradient(-45deg, rgba(78, 190, 254, 1) 0%, rgba(55, 143, 217, 1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(78, 190, 254, 1) 0%, rgba(55, 143, 217, 1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(78, 190, 254, 1) 0%, rgba(55, 143, 217, 1) 100%);
+    background: linear-gradient(135deg, rgba(78, 190, 254, 1) 0%, rgba(55, 143, 217, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4ebefe', endColorstr='#378fd9', GradientType=1);
+    color: #fff;
+    padding-bottom: 100px;
+}
+h1{
+    font-size: 35px;
+}
+h1 span{
+    font-size:56px;
+}
+.main{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+.offer{
+    
+}
+.dreams{
+    line-height: 3em;
+    
+}
+.dr{
+    font-size: 59px;
+    margin-top: 15px;
+    margin-bottom: 47px;
+}
+.intro{
+    font-size: 16px;
+    width: 430px;
+    margin-bottom: 40px;
+    line-height: 1.53em;
+    letter-spacing: 0.05em;
+}
+.fly{
+    
+}
+
+.go_dream{
+    font-family: 'Montserrat', sans-serif;
+    background: #ffd429;
+    display: block;
+    width:220px;
+    padding: 20px 0;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: all 0.5s ease;
+}
+.go_dream:hover{
+    letter-spacing: 0.15em;
+    background:#977c0e;
+}
+
+h2{
+    font-size:30px;
+    text-align: center;
+}
+.future{
+     padding-top: 100px;
+     padding-bottom: 120px;
+}
+.skill{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+}
+h3{
+    font-size: 19px;
+}
+
+.fut{
+    background: url('../image/icon.jpg') no-repeat top center;
+    padding-top: 85px;
+    text-align: center;
+}
+
+.title-f{
+    margin-top:10px;
+    width: 289px;
+}
+.f2{
+    background: url('../image/icon2.jpg') no-repeat top center;
+}
+.f3{
+    background: url('../image/icon3.jpg') no-repeat top center;
+}
+.FIO{
+    background:#ecf3f8;
+    padding-top:100px;
+    padding-bottom:100px;
+}
+.form{
+    padding-top: 40px;
+    text-align: center;
+    
+}
+.input{
+    width: 340px;
+    height: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    border: 1px solid #bbb;
+    padding-left: 20px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.two{
+    border: 0;
+    width: 340px;
+    margin: 15px auto;
+} 
+.end{
+    font-size: 14px;
+    color: #fff;
+    padding-top: 62px;
+    margin:0;
+}
+.ystic{
+    height: 150px;
+    background: #164d7a;
+    text-align: center;
+    margin: 0 auto;
+}
+
+@media screen and  (max-width: 1200px) {
+.container{
+    width: 960px;
+}
+.fly{
+    width: 540px;
+}
+}
+@media screen and (max-width: 992px) {
+.container {
+        width: 720px;
+    }
+.fly{
+    width:80%;
+}
+.main{
+    flex-direction: column;
+}
+.skill{
+    flex-direction: column;
+
+}
+.intro{
+    width: 100%;
+}
+.go_dream{
+    margin: 15px auto;
+}
+.title-f{
+    text-align: center;
+    width:100%;
+    margin: 15px
+}
+.fut {
+    background: url('../image/icon.jpg') no-repeat left center;
+    padding-left: 100px;
+    text-align: center;
+    width: 90%;
+    padding-top:15px;
+}
+
+
+.f2 {
+    background: url('../image/icon2.jpg') no-repeat left center;
+}
+
+.f3 {
+    background: url('../image/icon3.jpg') no-repeat left center;
+}
+}
+
+@media screen and (max-width: 768px) {
+.container {
+        width: 540px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+.container {
+        width: 90%;
+    }
+}

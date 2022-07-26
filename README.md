@@ -1,1 +1,1 @@
-# Lean-and-Traning
+lean and traning..
