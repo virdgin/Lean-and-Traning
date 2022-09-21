@@ -1,9 +1,11 @@
 import random
 import sys
 
+
 def end():
     print("Досвидания!")
     sys.exit()
+
 
 def valid(a):
     if a.lower() == "нет":
@@ -69,7 +71,6 @@ def start():
                 start()
             else:
                 end()
-                break
 
 
 print("Добро пожаловать в угадайку!")
