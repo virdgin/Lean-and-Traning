@@ -46,7 +46,7 @@ def start():
 
         left = int_valid(input("Введите начальное число: "))
         right = int_valid(input("Введите конечное число: "))
-        print(left,right)
+        print(left, right)
         if left < right:
             break
         else:
