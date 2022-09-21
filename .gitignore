@@ -17630,3 +17630,7 @@ django/venv/lib/python3.10/site-packages/sqlparse-0.4.2.dist-info/METADATA
 django/venv/lib/python3.10/site-packages/sqlparse-0.4.2.dist-info/RECORD
 django/venv/lib/python3.10/site-packages/sqlparse-0.4.2.dist-info/top_level.txt
 django/venv/lib/python3.10/site-packages/sqlparse-0.4.2.dist-info/WHEEL
+couersera/python/flags.py
+couersera/python/pingvin.py
+couersera/python/solution.py
+couersera/python/test.py

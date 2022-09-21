@@ -1,9 +1,9 @@
 import random
-
+import sys
 
 def end():
     print("Досвидания!")
-
+    sys.exit()
 
 def valid(a):
     if a.lower() == "нет":
@@ -43,10 +43,8 @@ def is_valid(left, right):
 def start():
     print("Сначала давайте определимся диапазон загадываемого числа.")
     while True:
-
         left = int_valid(input("Введите начальное число: "))
         right = int_valid(input("Введите конечное число: "))
-        print(left, right)
         if left < right:
             break
         else:
@@ -65,7 +63,7 @@ def start():
             counter += 1
         else:
             print("Вы угадали! Загаданное число", num)
-            print("Колличество попыток:", counter)
+            print("Колличество попыток:", counter+1)
             print("Хотите еще поиграть?")
             if valid(input()):
                 start()
