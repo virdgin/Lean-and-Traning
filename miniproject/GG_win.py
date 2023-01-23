@@ -10,25 +10,25 @@ def end():
     messagebox.showinfo("Угадайка", "Досвидания!")
     sys.exit()
 
-
 def diapason(t):
-    a = 0
+    num = StringVar()
     num_lb = Label(window, text=t, font="Arial 15")
     num_lb.pack(side=TOP, pady="6")
-    num_entry = Entry(font=15, justify=CENTER)
+    num_entry = Entry(textvariable=num, font=15, justify=CENTER)
     num_entry.pack(side=TOP)
     btn3 = Button(
         text="Ввести.",
         bg="#18FF72",
-        font=15,
-        command=lambda: int_valid(num_entry.get(), t),
+        command=lambda : int_valid(num.get(),t)
     )
     btn3.pack(fill=X, side=TOP)
+    btn3.wait_variable()
+    return int(num.get())
 
 
-def int_valid(a, t):
+def int_valid(a,t):
     if a.isdigit():
-        return int(a)
+        break
     else:
         messagebox.showinfo("Угадайка", "Введите число!")
         return diapason(t)
@@ -39,10 +39,12 @@ def is_valid(left, right):
     if left <= temp <= right:
         return temp
     elif temp > right:
-        messagebox.showinfo("Угадайка", "Число должно быть меньше " + str(right))
+        messagebox.showinfo(
+            "Угадайка", "Число должно быть меньше " + str(right))
         return is_valid(left, right)
     else:
-        messagebox.showinfo("Угадайка", "Число должно быть больше " + str(left))
+        messagebox.showinfo(
+            "Угадайка", "Число должно быть больше " + str(left))
         return is_valid(left, right)
 
 
@@ -54,16 +56,16 @@ def valid():
     valid_lb = Label(text=main_text, font="Arial 20")
     valid_lb.pack(side=TOP)
     while True:
-        text_num = ["Введите начальное значение:", "Введите конечное значение:"]
+        text_num = ["Введите начальное значение:",
+                    "Введите конечное значение:"]
         left = diapason(text_num[0])
-        if left:
-            right = diapason(text_num[1])
-            if left < right:
-                break
-            else:
-                messagebox.showinfo(
-                    "Угадайка", "Конечное число должно быть больше начального!"
-                )
+        right = diapason(text_num[1])
+        if left < right:
+            break
+        else:
+            messagebox.showinfo(
+                "Угадайка", "Конечное число должно быть больше начального!"
+            )
     number = random.randint(left, right)
     counter = 0
     main_text = "Угадывай!!!"
@@ -78,8 +80,8 @@ def valid():
             left = num
             counter += 1
         else:
-            print("Вы угадали! Загаданное число", num)
-            print("Колличество попыток:", counter + 1)
+            messagebox.showinfo(
+                "Угадайка", f"Вы угадали!\n Загаданное число: {num}\nКолличество попыток: {counter + 1}")
             print("Хотите еще поиграть?")
 
 
@@ -95,8 +97,10 @@ main_lb = Label(
     font="Arial 15",
 )
 main_lb.grid(row=0, column=3)
-btn1 = Button(text="Да", background="#18FF72", width="25", font=15, command=valid)
-btn2 = Button(text="Нет", background="#FF5F18", width="25", font=15, command=end)
+btn1 = Button(text="Да", background="#18FF72",
+              width="25", font=15, command=valid)
+btn2 = Button(text="Нет", background="#FF5F18",
+              width="25", font=15, command=end)
 btn1.pack(fill=BOTH, side=LEFT, expand=True)
 btn2.pack(fill=BOTH, side=RIGHT, expand=True)
 window.mainloop()
