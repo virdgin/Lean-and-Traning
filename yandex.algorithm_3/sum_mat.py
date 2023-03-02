@@ -1,13 +1,13 @@
-def preprocess(mat, n, m):
-    s = [[0 for j in range(m)] for i in range(n)]  # новая матрица
+def preprocess(mat, _n,_m):
+    s = [[0 for j in range(_m)] for i in range(_n)]  # новая матрица
     # первый аргумент новой матрицы равен первому аргументу начальной
     s[0][0] = mat[0][0]
-    for i in range(1, m):  # заполнение первой строки значениями
+    for i in range(1, _m):  # заполнение первой строки значениями
         s[0][i] = mat[0][i]+s[0][i-1]
-    for i in range(1, n):  # заполнение первого столбца значениями
+    for i in range(1, _n):  # заполнение первого столбца значениями
         s[i][0] = mat[i][0]+s[i-1][0]
-    for i in range(1, n):  # заполнение оставшейся матрицы
-        for j in range(1, m):
+    for i in range(1, _n):  # заполнение оставшейся матрицы
+        for j in range(1, _m):
             s[i][j] = mat[i][j]+s[i-1][j]+s[i][j-1]-s[i-1][j-1]
     return s
 
