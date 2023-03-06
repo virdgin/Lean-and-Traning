@@ -30,9 +30,6 @@ int main()
             num++;
         }
     }
-    int val = op.front();
-    op.pop();
-    int count = 1;
     cout << "YES";
     return 0;
 }
