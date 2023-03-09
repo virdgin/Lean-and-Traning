@@ -1,37 +1,38 @@
-from gettext import textdomain
-from tkinter import *
-import sys
-from tkinter import messagebox
 import random
-from tkinter import font
+import sys
+from tkinter import *
+from tkinter import font, messagebox
 
 
 def end():
     messagebox.showinfo("Угадайка", "Досвидания!")
     sys.exit()
 
+
+
 def diapason(t):
     num = StringVar()
     num_lb = Label(window, text=t, font="Arial 15")
-    num_lb.pack(side=TOP, pady="6")
-    num_entry = Entry(textvariable=num, font=15, justify=CENTER)
-    num_entry.pack(side=TOP)
+    num_lb.pack(side='top', pady="6")
+    check = (window.register(int_valid), "%P")
+    num_entry = Entry(textvariable=num, font='15',
+                      justify="center", validate="focusin", validatecommand=check)
+    num_entry.pack(side='top')
     btn3 = Button(
         text="Ввести.",
         bg="#18FF72",
-        command=lambda : int_valid(num.get(),t)
     )
-    btn3.pack(fill=X, side=TOP)
-    btn3.wait_variable()
+    btn3.bind('<Button-1>', lambda
+              t: (num.get(), t))
+    btn3.pack(fill=X, side='top')
     return int(num.get())
 
 
-def int_valid(a,t):
+def int_valid():
     if a.isdigit():
-        break
+        return True
     else:
         messagebox.showinfo("Угадайка", "Введите число!")
-        return diapason(t)
 
 
 def is_valid(left, right):
@@ -104,3 +105,4 @@ btn2 = Button(text="Нет", background="#FF5F18",
 btn1.pack(fill=BOTH, side=LEFT, expand=True)
 btn2.pack(fill=BOTH, side=RIGHT, expand=True)
 window.mainloop()
+
