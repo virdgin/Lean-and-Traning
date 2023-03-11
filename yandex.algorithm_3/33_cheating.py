@@ -8,6 +8,8 @@ for i in range(m):
     gr[a].add(b)
     gr[b].add(a)
 visited = [0 for i in range(n+1)]
+
+
 def dfs(now,cost):
     visited[now]=cost
     for neig in gr[now]:
@@ -16,6 +18,8 @@ def dfs(now,cost):
         elif visited[neig]== cost:
             return False
     return True
+
+
 for i in range(1,n+1):
     if visited[i]==0:
         flag = dfs(i,1)
