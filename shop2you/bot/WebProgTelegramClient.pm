@@ -2,6 +2,7 @@ package WebProgTelegramClient;
 use strict;
 use Encode;
 
+
 use IO::Socket::SSL;
 use Cpanel::JSON::XS;
 # use JSON qw(encode_json);
@@ -86,16 +87,18 @@ sub read_chat
   }
 
   my $all_updates = $this->call('getUpdates', {});
-
   # debug($all_updates);
   my $chat_messages = [];
   foreach my $row (@{$all_updates->{result}})
   {
+    # print Dumper($row);
     my $chat = $row->{message}->{chat};
+    # print Dumper($chat);
     # trace($chat_title);
     # trace($row->{chat}->{title});
     if( ($chat_id && $chat->{id} eq $chat_id) || ($chat_title && $chat->{title} eq $chat_title))
     {
+      # print Dumper(%$row);
       push(@$chat_messages, $row);
     }
   }
