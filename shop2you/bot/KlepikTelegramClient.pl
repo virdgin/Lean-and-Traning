@@ -15,7 +15,7 @@ my $tittle_chat = 'test_group_bot';
 my $bot         = WebProgTelegramClient->new( token => $token );
 my $users       = {};
 my $prev_update_id;
-my $chat_id = '-905661021';
+# my $chat_id = '-905661021';
 
 sub check_messege {
     my $message   = shift;
@@ -43,23 +43,19 @@ sub users_db {
 
 sub send_by {
     my $new_message      = shift;
-    my $left_member_id   = $new_message->{new_chat_member}->{id};
-    my $left_member_name = $new_message->{new_chat_member}->{first_name};
-    my $left_username = $new_message->{new_chat_member}->{username} || "None";
+
+    my $left_member_id   = $new_message->{left_chat_member}->{id};
+    my $left_member_name = $new_message->{left_chat_member}->{first_name};
     my $chat_id       = $new_message->{chat}->{id};
-    my $text;
-    if ( $left_username != "None" ) {
-        $text = "Желаем удачи, \@$left_username!";
-    }
-    else {
-        $text = "Желаем удачи, \@$left_member_name!";
-    }
+    my $text = "Желаем удачи, $left_member_name!";
+
     $bot->call( 'sendMessage', { chat_id => $chat_id, text => $text } );
     delete $users->{$left_member_id};
 }
 
 sub send_hi {
     my $message = shift;
+
     my $chat_id = $message->{chat}->{id};
     my $user_id = $message->{from}->{id};
     if ( defined $users->{$user_id}
@@ -67,14 +63,8 @@ sub send_hi {
     {
         my $message_id = $message->{message_id};
         my $first_name = $users->{$user_id}->{first_name};
-        my $username   = $users->{$user_id}->{username};
-        my $text;
-        if ( $username == "None" ) {
-            $text = "Привет, \@$first_name!";
-        }
-        else {
-            $text = "Привет, \@$username!";
-        }
+        my $text = "Привет, $first_name!";
+
         $bot->call(
             'sendMessage',
             {
@@ -84,6 +74,7 @@ sub send_hi {
             }
         );
     }
+
     $users->{$user_id}->{number_message} = 1;
 }
 
