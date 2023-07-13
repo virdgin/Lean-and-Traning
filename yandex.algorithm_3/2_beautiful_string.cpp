@@ -15,18 +15,19 @@ int main()
     }
     else
     {
-        for (int i = 0; i < s.size()-1; i++)
+        for (int i = 0; i < s.size() - 1; i++)
         {
             int r = 0, t = 0;
             char d = s[i];
             if (l.find(d) == l.npos)
             {
                 l = l + d;
-                for (int j = 0; j < s.size()-1; j++)
+                for (int j = 0; j < s.size() - 1; j++)
                 {
                     while (t <= n)
-                    {   
-                        if(r==s.size()+1)break;
+                    {
+                        if (r == s.size() + 1)
+                            break;
                         if (s[r] == d)
                         {
                             r++;
@@ -47,4 +48,3 @@ int main()
     }
     cout << count;
 }
-
