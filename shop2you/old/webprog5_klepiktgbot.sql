@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Июл 13 2023 г., 19:58
+-- Время создания: Июл 14 2023 г., 11:47
 -- Версия сервера: 10.6.7-MariaDB-1:10.6.7+maria~bullseye
 -- Версия PHP: 8.1.3
 
@@ -50,7 +50,8 @@ INSERT INTO `klepiktgbot_admin_id` (`id`, `admin_name`, `first_name`, `last_name
 
 CREATE TABLE `klepiktgbot_homework_id` (
   `id` int(10) UNSIGNED NOT NULL,
-  `data` date NOT NULL,
+  `max_devilery_data` date NOT NULL,
+  `devilery_data` date NOT NULL,
   `discriptions` text NOT NULL,
   `max_rating` int(10) UNSIGNED NOT NULL,
   `check_complete` tinyint(1) NOT NULL,
@@ -63,9 +64,9 @@ CREATE TABLE `klepiktgbot_homework_id` (
 -- Дамп данных таблицы `klepiktgbot_homework_id`
 --
 
-INSERT INTO `klepiktgbot_homework_id` (`id`, `data`, `discriptions`, `max_rating`, `check_complete`, `admin_id`, `user_id`, `titlegroup_id`) VALUES
-(1, '2023-07-12', 'создать скрипт', 100, 1, 1, 1, 1),
-(2, '2023-07-12', 'создать скрипт', 100, 1, 1, 2, 1);
+INSERT INTO `klepiktgbot_homework_id` (`id`, `max_devilery_data`, `devilery_data`, `discriptions`, `max_rating`, `check_complete`, `admin_id`, `user_id`, `titlegroup_id`) VALUES
+(1, '2023-07-12', '2023-07-11', 'написать скрипт', 100, 1, 1, 1, 1),
+(2, '2023-07-12', '2023-07-11', 'написать скрипт', 100, 1, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -147,14 +148,17 @@ ALTER TABLE `klepiktgbot_admin_id`
 ALTER TABLE `klepiktgbot_homework_id`
   ADD PRIMARY KEY (`id`),
   ADD KEY `admin_id` (`admin_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `titlegroup_id` (`titlegroup_id`);
+  ADD KEY `titlegroup_id` (`titlegroup_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `klepiktgbot_rating_id`
 --
 ALTER TABLE `klepiktgbot_rating_id`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `admin_id` (`admin_id`),
+  ADD KEY `homework_id` (`homework_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `klepiktgbot_titlegroup_id`
@@ -218,8 +222,8 @@ ALTER TABLE `klepiktgbot_admin_id`
 --
 ALTER TABLE `klepiktgbot_homework_id`
   ADD CONSTRAINT `klepiktgbot_homework_id_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `klepiktgbot_admin_id` (`id`),
-  ADD CONSTRAINT `klepiktgbot_homework_id_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `klepiktgbot_user_id` (`id`),
-  ADD CONSTRAINT `klepiktgbot_homework_id_ibfk_3` FOREIGN KEY (`titlegroup_id`) REFERENCES `klepiktgbot_titlegroup_id` (`id`);
+  ADD CONSTRAINT `klepiktgbot_homework_id_ibfk_2` FOREIGN KEY (`titlegroup_id`) REFERENCES `klepiktgbot_titlegroup_id` (`id`),
+  ADD CONSTRAINT `klepiktgbot_homework_id_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `klepiktgbot_user_id` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `klepiktgbot_rating_id`
